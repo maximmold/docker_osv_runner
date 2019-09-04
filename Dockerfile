@@ -23,6 +23,7 @@ qemu-utils \
 git \
 wget && apt-get autoremove && apt-get clean
 
+
 #
 # PREPARE ENVIRONMENT
 #
@@ -37,14 +38,18 @@ ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 RUN go get github.com/mikelangelo-project/capstan
 RUN cd $GOPATH/src/github.com/mikelangelo-project/capstan && go build .
 
-# Copy capstan apps
-WORKDIR /capstan-apps
-COPY ./apps/ /capstan-apps/
+
+#RUN groupadd -g 999 appuser && \
+#    useradd -r -d /home/appuser -u 999 -g appuser appuser
+RUN useradd -ms /bin/bash appuser
+USER appuser
+WORKDIR /home/appuser
 
 # Download latest OSv kernel and packages
-RUN mkdir /scripts
-COPY ./scripts/* /scripts/
-RUN /scripts/download_packages.sh all
+RUN mkdir /home/appuser/scripts
+COPY ./scripts/* /home/appuser/scripts/
+RUN /home/appuser/scripts/download_packages.sh all
+
 
 CMD /bin/bash
 

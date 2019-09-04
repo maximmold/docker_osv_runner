@@ -1,0 +1,8 @@
+name: spring-boot-example
+title: Spring Boot Example
+author: Anonymous
+version: "1.0"
+require:
+- openjdk8-zulu-full
+- osv.run-java
+created: "2019-08-21T14:34:40Z"

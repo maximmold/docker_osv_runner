@@ -1,0 +1,5 @@
+runtime: native
+config_set:
+  default:
+    bootcmd: "java.so -verbose:gc -XX:+PrintFlagsFinal -Xms256m -Xmx256m -jar hello-spring-boot.jar"
+config_set_default: default

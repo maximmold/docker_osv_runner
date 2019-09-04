@@ -4,4 +4,5 @@ author: Anonymous
 version: "1.0"
 require:
 - osv.openjdk10-java-base
-created: "2018-06-13T18:09:24-04:00"
+- osv.run-java
+created: "2019-08-21T14:34:40Z"
